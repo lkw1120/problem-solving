@@ -1,62 +1,36 @@
 #include<bits/stdc++.h>
-using namespace std;
 typedef long long ll;
-const int MOD = 1000000000;
-const int MAX = 40000;
-map<int,int> a,b;
-vector<int> prime;
-bool isPrime[MAX];
-ll N,M,n,m,ans;
-void init() {
-	fill(isPrime,isPrime+MAX,true);
-	for(int i=2;i<MAX;i++) {
-		if(!isPrime[i]) continue;
-		prime.push_back(i);
-		for(int j=2*i;j<MAX;j+=i) {
-			isPrime[j] = false;
-		}
-	}
+using namespace std;
+const int INF = 1e9;
+int arr1[1001] = {0};
+int arr2[1001] = {0};
+ll N,M,ans;
+ll gcd(ll a, ll b) {
+	return b == 0? a: gcd(b,a%b);	
 }
 int main() {
-    ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-	init();
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 	cin>>N;
-	for(int i=0;i<N;i++) {
-		cin>>n;
-		for(int j=0;j<prime.size();j++) {
-			if(n%prime[j] == 0) {
-				a[prime[j]]++;
-				n/=prime[j];
-				j--;
-			}
-		}
-		a[n]++;
+	for(int i=1;i<=N;i++) {
+		cin>>arr1[i];	
 	}
 	cin>>M;
-	for(int i=0;i<M;i++) {
-		cin>>n;
-		for(int j=0;j<prime.size();j++) {
-			if(n%prime[j] == 0) {
-				b[prime[j]]++;
-				n/=prime[j];
-				j--;
-			}
-		}
-		b[n]++;
+	for(int j=1;j<=M;j++) {
+		cin>>arr2[j];	
 	}
 	ans = 1;
 	bool flag = false;
-	for(auto item: a) {
-		int now = item.first;
-		if(!b[now]) continue;
-		int cnt = min(a[now],b[now]);
-		while(cnt--){
-			ans*=now;
-			if(ans > MOD) {
+	for(int i=1;i<=N;i++) {
+		for(int j=1;j<=M;j++) {
+			ll tmp = gcd(arr1[i],arr2[j]);
+			ans*=tmp;
+			arr1[i]/=tmp;
+			arr2[j]/=tmp;
+			if(ans/INF) {
+				ans%=INF;
 				flag = true;
-				ans%=MOD;
 			}
 		}
 	}
