@@ -1,34 +1,45 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int MAX = 16;
-const int INF = 999999999;
-int W[MAX][MAX] = {0};
-int dp[MAX][1<<MAX] = {0};
+const int INF = 987654321;
+int arr[16][16] = {0};
+int dp[16][1<<16] = {0};
 int N,ans;
-int tsp(int city,int visited) {
-    if(visited == (1<<N)-1) {
-        if(W[city][0] == 0) return INF;
-        return W[city][0];
+int dfs(int cur, int visit){
+    if(visit == (1<<N)-1) {
+        if(arr[cur][0] == 0) {
+            return INF;
+		}
+        return arr[cur][0];
     }
-    if(dp[city][visited] != INF) {
-        return dp[city][visited];
-    }
+    if(dp[cur][visit] != -1) {
+        return dp[cur][visit];
+	}
+    dp[cur][visit] = INF;
     for(int i=0;i<N;i++) {
-        if(W[city][i] == 0 || (visited&1<<i)) continue;
-        dp[city][visited] = min(dp[city][visited],tsp(i,(visited|1<<i))+W[city][i]);
+        if(arr[cur][i]==0) {
+            continue;
+		}
+        if((visit & (1<<i)) == (1<<i)) {
+            continue;
+		}
+        dp[cur][visit] = min(dp[cur][visit], arr[cur][i] + dfs(i, visit | 1<<i));
     }
-    return dp[city][visited];
+    
+    return dp[cur][visit];
 }
+
 int main() {
-    ios_base::sync_with_stdio(false);
-    fill(&dp[0][0],&dp[MAX-1][0]+(1<<MAX),INF);
+    ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
     cin>>N;
     for(int i=0;i<N;i++) {
         for(int j=0;j<N;j++) {
-            cin>>W[i][j];
+            cin>>arr[i][j];
         }
     }
-    ans = tsp(0,1);
+    memset(dp,-1,sizeof(dp));
+	ans = dfs(0,1);
     cout<<ans<<"\n";
     return 0;
 }
