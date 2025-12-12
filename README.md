@@ -1,11 +1,15 @@
-# problem-solving
-PS 기록
+# Problem Solving & Algorithm Training Grounds
 
-### PS 사이트 리스트
-- [BOJ](https://www.acmicpc.net/)
-- [Programmers](https://programmers.co.kr/)
-- [SWEA](https://swexpertacademy.com/main/main.do)
-- [codility](https://app.codility.com/programmers/)
-- [HackerRank](https://hackerrank.com/)
-- [AtCoder](https://atcoder.jp/?lang=en)
-- [CodeForces](https://codeforces.com)
+This repository is an archive of algorithmic problem-solving solutions from various online judges.
+
+### Platforms
+| Name | Link |
+|----------|------|
+| AtCoder | https://atcoder.jp |
+| Codeforces | https://codeforces.com |
+| HackerRank | https://hackerrank.com |
+| LeetCode | https://leetcode.com |
+| Codility | https://app.codility.com/programmers/ |
+| BOJ (Baekjoon Online Judge) | https://www.acmicpc.net |
+| SWEA (Samsung SW Expert Academy) | https://swexpertacademy.com |
+| Programmers | https://programmers.co.kr |
