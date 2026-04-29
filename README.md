@@ -10,6 +10,6 @@ This repository is an archive of algorithmic problem-solving solutions from vari
 | HackerRank | https://hackerrank.com |
 | LeetCode | https://leetcode.com |
 | Codility | https://app.codility.com/programmers/ |
-| BOJ (Baekjoon Online Judge) | https://www.acmicpc.net |
+| BOJ (Baekjoon Online Judge) | ~~https://www.acmicpc.net~~ |
 | SWEA (Samsung SW Expert Academy) | https://swexpertacademy.com |
 | Programmers | https://programmers.co.kr |
